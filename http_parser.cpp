@@ -36,22 +36,22 @@ py::dict parse_http_request(const std::string& request_raw) {
         result["path"] = py::none();
         result["version"] = py::none();
         result["headers"] = py::dict();
-        result["body"] = py::none();
+        result["body"] = py::bytes();
         return result;
     }
 
     // 成功时填充数据
-    result["error"] = py::none();
-    result["method"] = std::string(method, method_len);
-    result["path"] = std::string(path, path_len);
+    result["error"] = py::bytes();
+    result["method"] = py::bytes(method, method_len);
+    result["path"] = py::bytes(path, path_len);
     result["version"] = minor_version == 1 ? "HTTP/1.1" : "HTTP/1.0";
 
     // 处理头部
     py::dict headers_dict;
     for (size_t i = 0; i < num_headers; ++i) {
-        std::string name(headers[i].name, headers[i].name_len);
-        std::string value(headers[i].value, headers[i].value_len);
-        headers_dict[name.c_str()] = value;
+        py::bytes name(headers[i].name, headers[i].name_len);
+        py::bytes value(headers[i].value, headers[i].value_len);
+        headers_dict[name] = value;
     }
     result["headers"] = headers_dict;
 
@@ -59,7 +59,7 @@ py::dict parse_http_request(const std::string& request_raw) {
     size_t body_start = ret;
     size_t body_len = buf_len - body_start;
     const char* body_data = buf + body_start;
-    result["body"] = body_len > 0 ? py::bytes(body_data, body_len) : py::none();
+    result["body"] = body_len > 0 ? py::bytes(body_data, body_len) : py::bytes();
 
     return result;
 }

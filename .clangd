@@ -4,6 +4,7 @@ CompileFlags:
         "-I/config/workspace/hibot/src/", 
         "-I/config/workspace/hibot/src/third_party/libdockdb/", 
         "-I/config/workspace/dependences/include/", 
+        "-I/root/picohttpparser-src/thirty_lib", 
         "-I/usr/include/c++/12/",
         "-I/usr/include/c++/12/x86_64-TencentOS-linux/",
         "-I/config/workspace/hibot/thirty_lib/mysql-connector-c++-8.3.0-linux-glibc2.28-x86-64bit/include", 

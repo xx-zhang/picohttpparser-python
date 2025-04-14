@@ -3,7 +3,7 @@ import pybind11
 
 setup(
     name="picohttpparser",      # 修改库名称
-    version="0.0.1",            # 指定版本号
+    version="0.0.2",            # 指定版本号
     ext_modules=[
         Extension(
             "picohttpparser",   # 修改模块名称（需与 C++ 代码一致）
