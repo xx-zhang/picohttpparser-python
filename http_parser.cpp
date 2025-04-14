@@ -61,6 +61,6 @@ py::dict parse_http_request(const std::string& request_raw) {
     return result;
 }
 
-PYBIND11_MODULE(http_parser, m) {
+PYBIND11_MODULE(picohttpparser, m) {  // 名称与 setup.py 一致
     m.def("parse_http_request", &parse_http_request, "解析 HTTP 请求原始数据");
 }

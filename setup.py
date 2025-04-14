@@ -13,4 +13,14 @@ setup(
         )
     ],
     zip_safe=False,
+    author="xx-zhang",
+    author_email="actanble@gmail.com",
+    description="Python binding for picohttpparser",
+    long_description=open("readme.md").read(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/yourrepo/picohttpparser",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+    ],
 )
